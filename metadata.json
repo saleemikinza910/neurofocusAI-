@@ -1,0 +1,6 @@
+{
+  "name": "FocusFlow",
+  "description": "An interactive study companion that adapts to ADHD, Autism, Dyslexia, Dyscalculia, Sensory Processing, Executive Dysfunction, and performance anxiety.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,336 @@
+/* FocusFlow Core Typography & Custom Sensory Theme Engine */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  /* Default (Forest Calm) - Warm, earthy, low eye strain */
+  --bg-primary: #f5f0e8;
+  --bg-secondary: #faf7f2;
+  --text-primary: #2d3e2b;
+  --text-secondary: #5b6e55;
+  --accent: #8baa7a;
+  --accent-hover: #729162;
+  --success: #6b8c5c;
+  --warning: #d4a373;
+  --border: #dcd5c5;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --shadow-sm: 0 1px 3px rgba(45, 62, 43, 0.05);
+  --shadow-md: 0 8px 24px -4px rgba(45, 62, 43, 0.08);
+  --shadow-lg: 0 16px 48px -8px rgba(45, 62, 43, 0.12);
+  --letter-spacing: normal;
+  --word-spacing: normal;
+  --line-height: 1.6;
+
+  /* Animation & Transition Defaults */
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --ease-default: cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ADHD Focus Mode - Dark, deep forest green + warm amber accent */
+[data-profile="adhd"] {
+  --bg-primary: #1e2c1c;
+  --bg-secondary: #21311f;
+  --text-primary: #f9e7c2;
+  --text-secondary: #e0cfaa;
+  --accent: #e0a458;
+  --accent-hover: #cb8e43;
+  --success: #8cb36c;
+  --warning: #e6b87e;
+  --border: #354a32;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --radius-card: 16px;
+  --radius-btn: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.3);
+  --shadow-lg: 0 16px 48px rgba(0,0,0,0.4);
+}
+
+/* Autism Calm Mode - Soft desaturated flat look, no sensory shock */
+[data-profile="autism"] {
+  --bg-primary: #e8e4d8;
+  --bg-secondary: #f0ede4;
+  --text-primary: #5c5a4a;
+  --text-secondary: #7a7866;
+  --accent: #b8b0a0;
+  --accent-hover: #9c9484;
+  --success: #8faa7b;
+  --warning: #c9a03d;
+  --border: #d4cfc0;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --radius-card: 4px;
+  --radius-btn: 4px;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --duration-fast: 0ms;
+  --duration-normal: 0ms;
+  --duration-slow: 0ms;
+}
+
+/* Dyslexia Reader Mode - Custom visual anchoring background, high legibility */
+[data-profile="dyslexia"] {
+  --bg-primary: #2a2420;
+  --bg-secondary: #332b26;
+  --text-primary: #f2e8d5;
+  --text-secondary: #ddd0ba;
+  --accent: #c3a5a0;
+  --accent-hover: #b08e89;
+  --success: #a8bf8e;
+  --warning: #e6cfa0;
+  --border: #4d4039;
+  --font-family: 'Comic Neue', cursive, sans-serif;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  --shadow-sm: 0 2px 4px rgba(0,0,0,0.15);
+  --shadow-md: 0 8px 20px rgba(0,0,0,0.25);
+  --shadow-lg: 0 12px 36px rgba(0,0,0,0.35);
+  --letter-spacing: 0.12em;
+  --word-spacing: 0.22em;
+  --line-height: 1.9;
+}
+
+/* Dyslexia Clean Minimalism Override */
+[data-profile="dyslexia"][data-dyslexia-minimalist="true"] {
+  --bg-primary: #fbfaf7;         /* High-contrast soft minimalist bone background */
+  --bg-secondary: #ffffff;       /* Pure white backing for elevated clean contrast */
+  --text-primary: #121212;       /* Near black for crisp readability under heavy tracking */
+  --text-secondary: #4a5568;     /* Neutral secondary slate */
+  --accent: #4a773c;             /* High contrast solid sage green */
+  --accent-hover: #3b5f30;
+  --success: #4a773c;
+  --warning: #cc8b45;
+  --border: #e2e8f0;             /* Ultra thin clean division lines */
+  --font-family: 'Comic Neue', cursive, sans-serif;
+  --radius-card: 8px;            /* Sleeker, flat card edges */
+  --radius-btn: 6px;
+  --shadow-sm: none;             /* Eliminate cognitive visual depth noise */
+  --shadow-md: none;
+  --shadow-lg: none;
+  --letter-spacing: 0.16em;      /* Extremely spacious letter spacing to stop crowding */
+  --word-spacing: 0.28em;        /* Wide word gaps to enhance semantic tracking */
+  --line-height: 2.15;           /* Expanded line spacing for visual breathing room */
+}
+
+/* SPD (Sensory Processing Disorder) Low Arousal Mode - minimal visual accents */
+[data-profile="spd"] {
+  --bg-primary: #eaebe6;
+  --bg-secondary: #f2f3ee;
+  --text-primary: #3c3c3a;
+  --text-secondary: #656563;
+  --accent: #8e8d89;
+  --accent-hover: #72716e;
+  --success: #7b8374;
+  --warning: #beab89;
+  --border: #d0d2cc;
+  --font-family: 'Inter', system-ui, sans-serif;
+  --radius-card: 0px;
+  --radius-btn: 0px;
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+  --duration-fast: 0ms;
+  --duration-normal: 0ms;
+  --duration-slow: 0ms;
+}
+
+/* Independent Dark Mode Modifier */
+[data-dark="true"]:not([data-profile="adhd"]):not([data-profile="dyslexia"]):not([data-profile="spd"]) {
+  --bg-primary: #121612;
+  --bg-secondary: #1a201a;
+  --text-primary: #ece5d8;
+  --text-secondary: #9ea89c;
+  --accent: #8baa7a;
+  --accent-hover: #9fbe8e;
+  --success: #6b8c5c;
+  --warning: #d4a373;
+  --border: #2c362a;
+}
+
+/* Calm Mode global toggle - absolute transition & motion disabling script */
+[data-calm-mode="true"], .calm-mode {
+  --duration-fast: 0ms !important;
+  --duration-normal: 0ms !important;
+  --duration-slow: 0ms !important;
+  --shadow-sm: none !important;
+  --shadow-md: none !important;
+  --shadow-lg: none !important;
+  --radius-card: 0px !important;
+  --radius-btn: 0px !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+[data-calm-mode="true"] *, .calm-mode * {
+  animation: none !important;
+  transition: none !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Core styling applying custom sensory values */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  letter-spacing: var(--letter-spacing);
+  word-spacing: var(--word-spacing);
+  line-height: var(--line-height);
+  transition: background-color var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out);
+}
+
+/* FocusFlow Custom Tailwind UI Bridging Classes */
+.bg-flow-primary { background-color: var(--bg-primary); }
+.bg-flow-secondary { background-color: var(--bg-secondary); }
+.text-flow-primary { color: var(--text-primary); }
+.text-flow-secondary { color: var(--text-secondary); }
+.border-flow { border-color: var(--border); }
+.text-flow-accent { color: var(--accent); }
+.bg-flow-accent { background-color: var(--accent); }
+.bg-flow-accent-hover:hover { background-color: var(--accent-hover); }
+.text-flow-success { color: var(--success); }
+.bg-flow-success { background-color: var(--success); }
+.text-flow-warning { color: var(--warning); }
+.bg-flow-warning { background-color: var(--warning); }
+
+/* Animation Engine definitions */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bellShake {
+  0%, 100% { transform: rotate(0); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+@keyframes pulseRed {
+  0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+  70% { box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+/* Adaptive Classes for animations */
+.animate-fade-up {
+  animation: fadeUp var(--duration-slow) var(--ease-default) forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn var(--duration-normal) var(--ease-default) forwards;
+}
+
+.animate-bell-shake {
+  animation: bellShake var(--duration-slow) ease-in-out;
+}
+
+.animate-panic-pulse {
+  animation: pulseRed 1s infinite;
+}
+
+@keyframes rippleExpand {
+  0% {
+    width: 6px;
+    height: 6px;
+    opacity: 1;
+    border-width: 3px;
+  }
+  100% {
+    width: 130px;
+    height: 130px;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+.animate-ripple-expand {
+  animation: rippleExpand 1.2s cubic-bezier(0.1, 0.8, 0.1, 1) forwards;
+}
+
+/* Draggable Reading Ruler Overlay Mode */
+.reading-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 48px;
+  background-color: rgba(254, 240, 138, 0.35); /* Yellow highlighting highlight */
+  border-top: 2px solid rgba(253, 224, 71, 0.8);
+  border-bottom: 2px solid rgba(253, 224, 71, 0.8);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Custom interactive inputs to adhere to radius requirements */
+.card-flow {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.btn-flow {
+  border-radius: var(--radius-btn);
+  font-weight: 500;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.input-flow {
+  border-radius: var(--radius-btn);
+  border: 1px solid var(--border);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* 🌀 Calming Rest Aura & Color Transitions for 20-20-20 Optical Rule */
+@keyframes lowAnxietyAura {
+  0% {
+    background-color: rgb(24, 30, 24); /* Calming Forest Shadow */
+  }
+  33% {
+    background-color: rgb(23, 22, 32); /* Dim Lavender Dusk */
+  }
+  66% {
+    background-color: rgb(34, 28, 24); /* Soft terracotta shade */
+  }
+  100% {
+    background-color: rgb(24, 30, 24); /* Forest Shadow cycle */
+  }
+}
+
+.animate-low-anxiety-aura {
+  animation: lowAnxietyAura 18s ease-in-out infinite;
+}
+
+@keyframes slowOrbitPulse {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.70;
+  }
+  100% {
+    transform: scale(0.95);
+    opacity: 0.35;
+  }
+}
+
+.animate-slow-orbit-pulse {
+  animation: slowOrbitPulse 6s ease-in-out infinite;
+}
